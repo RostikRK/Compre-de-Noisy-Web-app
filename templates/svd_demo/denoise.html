@@ -1,0 +1,35 @@
+{% extends 'svd_demo/base.html' %}
+{% load static %}
+
+{% block title %}SVD compression{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'svd_demo/upload.css' %}">
+{% endblock %}
+{% block content %}
+<h2>Denoise Images</h2>
+<p class="lead">Select an image to compress</p>
+
+<form id="file-upload-form" class="uploader" method="POST" enctype="multipart/form-data" action="{% url 'svd_demo:denoise' %}">
+    {% csrf_token %}
+    <input id="file-upload" type="file" name="image" accept="image/*" multiple />
+    <label for="file-upload" id="file-drag">
+        <img id="file-image" src="#" alt="Preview" class="hidden">
+        <div id="start">
+          <i class="fa fa-download" aria-hidden="true"></i>
+          <div>Select a file or drag here</div>
+          <div id="notimage" class="hidden">Please select an image</div>
+          <span id="file-upload-btn" class="btn btn-primary">Select a file</span>
+        </div>
+        <div id="response" class="hidden">
+          <div id="messages"></div>
+          <progress class="progress" id="file-progress" value="0">
+            <span>0</span>%
+          </progress>
+        </div>
+    </label>
+</form>
+{% endblock %}
+
+{% block script %}
+  <script src="{% static 'svd_demo/upload.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'svd_demo/base.html' %}
+{% load static %}
+
+{% block title %}SVD compression results{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'svd_demo/result.css' %}">
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Denoised Image Results</h1>
+</div>
+
+<div class="images-container">
+    {% for denoised_image in denoised_images %}
+        <div class="image-pair">
+            <div class="image-wrapper">
+                <img src="{{ denoised_image.original.url }}" alt="Original Image">
+                <p>Original Size: {{ denoised_image.original.size }} bytes</p>
+            </div>
+            <div class="image-wrapper">
+                <img src="{{ denoised_image.denoised.url }}" alt="Denoised Image">
+                <p>Denoised Size: {{ denoised_image.denoised.size }} bytes</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

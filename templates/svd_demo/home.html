@@ -1,0 +1,28 @@
+{% extends 'svd_demo/base.html' %}
+{% load static %}
+
+{% block title %}SVD Home {% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static '/svd_demo/home.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Welcome to the SVD Image Processing App</h1>
+        <p>This app can compress and denoise images using Singular Value Decomposition (SVD).</p>
+
+        <div class="action">
+            <div class="compress">
+                <h2>Image Compression</h2>
+                <p>Image compression reduces the size of an image file without degrading the quality of the image below an acceptable level.</p>
+                <a href="{% url 'svd_demo:compress' %}" class="btn">Compress Image</a>
+            </div>
+
+            <div class="denoise">
+                <h2>Noise Reduction</h2>
+                <p>Noise reduction is the process of removing noise from an image.</p>
+                <a href="{% url 'svd_demo:denoise' %}" class="btn">Denoise Image</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

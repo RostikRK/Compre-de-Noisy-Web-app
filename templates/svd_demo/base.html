@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'svd_demo/styles.css' %}">
+    {% block styles %}
+    
+    {% endblock %}
+    <style>
+        body {
+            margin: 0;
+            padding-top: 40px; /* Add padding to the top of the page */
+        }
+
+        nav {
+            position: fixed;
+            top: 20px;
+            width: 50%;
+            background-color: darkslategrey;
+            z-index: 100;
+        }
+
+        /* Add margin to the content below the navbar */
+        main {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'svd_demo:home' %}">HOME</a>
+        <a href="{% url 'svd_demo:compress' %}">COMPRESS</a>
+        <a href="{% url 'svd_demo:denoise' %}">DENOISE</a>
+        <div id="indicator"></div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+    {% block script %}
+    {% endblock %}
+</body>
+</html>
